@@ -12,7 +12,7 @@ on:
       - '**.go'
 
 jobs:
-  linux_amd64_build:
+  freebsd_amd64_build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,13 +22,13 @@ jobs:
           usesh: true
           release: 13.2
           prepare: |
-            pkg install -y  go121 gcc 
-            ln -s /usr/local/bin/go121 /usr/local/bin/go
+            pkg install -y go121 gcc
+            ln -sf /usr/local/go121/bin/go /usr/local/bin/go
           run: |
             cd ./Golang
-            GOOS=linux GOARCH=amd64 go build -o allinone_linux_amd64
+            GOOS=freebsd GOARCH=amd64 go build -o allinone_freebsd_amd64
       - name: Upload Cross Compile Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: allinone_linux_amd64
-          path: Golang/allinone_linux_amd64
+          name: allinone_freebsd_amd64
+          path: Golang/allinone_freebsd_amd64
