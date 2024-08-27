@@ -19,7 +19,7 @@ jobs:
       - name: Cross Compile
         uses: vmactions/freebsd-vm@v1
         with:
-          usesh: true
+          usesh: false
           prepare: |
             pkg install -y curl
           run: |
