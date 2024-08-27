@@ -20,10 +20,6 @@ jobs:
         uses: vmactions/freebsd-vm@v1
         with:
           usesh: true
-          release: 13.2
-          prepare: |
-            pkg install -y go121 gcc
-            ln -sf /usr/local/go121/bin/go /usr/local/bin/go
           run: |
             cd ./Golang
             GOOS=freebsd GOARCH=amd64 go build -o allinone_freebsd_amd64
