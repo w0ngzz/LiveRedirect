@@ -20,6 +20,8 @@ jobs:
         uses: vmactions/freebsd-vm@v1
         with:
           usesh: true
+          prepare: |
+            pkg install -y curl
           run: |
             cd ./Golang
             GOOS=freebsd GOARCH=amd64 go build -o allinone_freebsd_amd64
